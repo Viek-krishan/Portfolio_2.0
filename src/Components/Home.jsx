@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ProjectsListSection from "./ProjectListSection";
 import ProjectLookUp from "./ProjectLookUpSection";
-import ProjectDetail from "./ProjectDetail";
 
 const Home = () => {
   const [isHovered, setIsHovered] = useState({
@@ -10,13 +9,15 @@ const Home = () => {
     isClicked: false,
   });
 
+  const [imgIndx, setImgIndex] = useState(0);
+
   // UI for multiple pages displaying under the discription
   const PageUI = ({ page, index }) => {
     return (
       <div className=" m-5 mb-54 w-full flex justify-center items-center ">
         {index === 0 || index % 2 === 0 ? (
           <div className=" m-5 mb-60 w-full flex justify-center items-center ">
-            <div className="PageDetails px-5">
+            <div className="PageDetails px-5 tablet:w-2/3 ">
               <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
                 {page[1]}
               </h1>
@@ -39,7 +40,7 @@ const Home = () => {
                 className="w-[65vw] h-[47vh] rounded-3xl drop-shadow-2xl"
               />
             </div>
-            <div className="PageDetails px-10">
+            <div className="PageDetails px-10 tablet:w-2/3">
               <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
                 {page[1]}
               </h1>
@@ -51,16 +52,17 @@ const Home = () => {
     );
   };
 
+
   return (
     <div>
-      <div className="home w-full h-fit mt-10 mb-10 flex flex-col justify-center items-end  ">
-        <h1 className="text-4xl font-medium m-4 mr-72 mb-0 pb-2 font-Cormorant txt-golden ">
+      <div className="home w-full h-fit desktop:mt-10 desktop:mb-10 ">
+        <h1 className="w-fit desktop:relative desktop:left-[40vw]  desktop:text-4xl  font-medium m-4 desktop:mb-0 pb-2 font-Cormorant txt-golden phone:text-3xl phone:mt-10 phone:text-center   ">
           Building the Web, Building Your Success.
         </h1>
       </div>
-      <div className="w-full h-fit flex justify-evenly items-start  ">
-        <section className="ProjectsList w-1/4 flex flex-col items-center justify-center ">
-          <h1 className="text-center text-2xl mb-2 font-Cormorant txt-golden">
+      <div className="Project_List_and_Lookup w-full h-fit tablet:flex justify-evenly items-start ">
+        <section className="ProjectsList hidden tablet:w-1/4 tablet:flex flex-col items-center justify-center   ">
+          <h1 className="text-center phone:text-2xl tablet:text-2xl mb-2 font-Cormorant txt-golden">
             My Projects
           </h1>
           <ProjectsListSection
@@ -68,8 +70,8 @@ const Home = () => {
             setIsHovered={setIsHovered}
           />
         </section>
-        <section className="ProjectLookUp w-4/6  ">
-          <ProjectLookUp isHovered={isHovered} />
+        <section className="ProjectLookUp tablet:w-4/6 phone:w-screen">
+          <ProjectLookUp isHovered={isHovered} setIsHovered={setIsHovered} />
         </section>
       </div>
 

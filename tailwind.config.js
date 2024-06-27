@@ -2,6 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      phone: "320px",
+      tablet: "810px",
+      laptop: "1280px",
+      desktop: "1320px",
+    },
     extend: {
       fontFamily: {
         BodoniModa: ["Bodoni Moda"],

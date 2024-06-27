@@ -1,7 +1,7 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
 
-const ProjectDetail = ({ isHovered, Details }) => {
+const ProjectDetail = ({ isHovered, Details, setIsHovered }) => {
   // Variables
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -74,8 +74,17 @@ const ProjectDetail = ({ isHovered, Details }) => {
     );
   };
 
+  const onClose = () => {
+    setIsHovered({ visible: false, item: {}, isClicked: false });
+  };
+
   return Details ? (
     <div>
+      <div className="hidden tablet:flex w-full  justify-end ">
+        <button className="CloseBtn place-self-end" onClick={onClose}>
+          <X size={30} />
+        </button>
+      </div>
       <div className="ProjectName w-fit mb-5 mx-20 flex flex-col justify-center items-center">
         <h1 className="text-2xl w-fit txt-golden font-Cormorant">
           {isHovered?.item?.name}
@@ -106,14 +115,6 @@ const ProjectDetail = ({ isHovered, Details }) => {
           </button>
         </div>
       </div>
-      {/* <div className="ProjectDetail">
-        <div className="Project_Description"></div>
-
-        
-        {Details.img.map((page, index) => {
-          return <PageUI page={page} index={index} key={index + "pages"} />;
-        })}
-      </div> */}
     </div>
   ) : (
     <div>
