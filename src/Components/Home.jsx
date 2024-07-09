@@ -14,9 +14,9 @@ const Home = () => {
   // UI for multiple pages displaying under the discription
   const PageUI = ({ page, index }) => {
     return (
-      <div className=" m-5 mb-54 w-full flex justify-center items-center ">
+      <div className=" m-5 mb-54 w-full flex justify-center items-center  z-50">
         {index === 0 || index % 2 === 0 ? (
-          <div className=" m-5 mb-60 w-full flex justify-center items-center ">
+          <div className=" p-5 pb-60 w-full flex justify-center items-center  z-50">
             <div className="PageDetails px-5 tablet:w-2/3 ">
               <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
                 {page[1]}
@@ -32,7 +32,7 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className=" m-5 mb-60 w-full flex justify-center items-center ">
+          <div className=" p-5 pb-60 w-full flex justify-center items-center z-50">
             <div className="">
               <img
                 src={page[0]}
@@ -40,7 +40,7 @@ const Home = () => {
                 className="w-[65vw] h-[47vh] rounded-3xl drop-shadow-2xl"
               />
             </div>
-            <div className="PageDetails px-10 tablet:w-2/3">
+            <div className="PageDetails px-10 tablet:w-2/3 z-50">
               <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
                 {page[1]}
               </h1>
@@ -56,7 +56,7 @@ const Home = () => {
   return (
     <div>
       <div className="home w-full h-fit desktop:mt-10 desktop:mb-10 ">
-        <h1 className="w-fit desktop:relative desktop:left-[40vw]  desktop:text-4xl  font-medium m-4 desktop:mb-0 pb-2 font-Cormorant txt-golden phone:text-3xl phone:mt-10 phone:text-center   ">
+        <h1 className="w-fit desktop:relative desktop:left-[30vw]  desktop:text-[4rem] desktop:mb-0 desktop:p-4 font-[700] m-4  pb-2 font-Caveat  txt-golden phone:text-3xl phone:mt-10 phone:text-center    ">
           Building the Web, Building Your Success.
         </h1>
       </div>
@@ -77,12 +77,12 @@ const Home = () => {
 
       {/* Rendering all the pages and it's details of a perticular project */}
       {isHovered.visible === true || isHovered.isClicked === true ? (
-        <div className="ProjectDetail">
+        <div className="ProjectDetail z-50">
           {/* TODO:Write the complete project Description for all projects */}
           <div className="Project_Description"></div>
 
           {/* Looping on all the pages on a perticular project */}
-          {isHovered.item.img.map((page, index) => {
+          {isHovered?.item?.img?.map((page, index) => {
             return <PageUI page={page} index={index} key={index + "pages"} />;
           })}
         </div>

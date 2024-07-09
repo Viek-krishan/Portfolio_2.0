@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,900&family=Cormorant:wght@700&family=Exo+2:wght@100&family=Philosopher:ital,wght@1,700&family=Rajdhani:wght@300;500&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,9 +24,12 @@
 
 @layer components {
   .txt-golden {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#AE8625] via-[#F7EF8A] to-[#EDC967];
+    @apply text-[#000080]
   }
+  /* .txt-golden {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#AE8625] via-[#F7EF8A] to-[#EDC967];
+  } */
   .txt-gray {
-    @apply text-[#f2f2f2];
+    @apply text-[#555555];
   }
 }

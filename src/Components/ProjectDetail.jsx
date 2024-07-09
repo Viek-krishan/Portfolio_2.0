@@ -21,72 +21,20 @@ const ProjectDetail = ({ isHovered, Details, setIsHovered }) => {
     );
   };
 
-  const PageUI = ({ page, index }) => {
-    return (
-      <div className=" m-5 mb-54 w-full flex justify-center items-center ">
-        {index === 0 || index % 2 === 0 ? (
-          <div className=" m-5 mb-60 w-full flex justify-center items-center ">
-            <div className="PageDetails px-3">
-              <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
-                {page[1]}
-              </h1>
-              <h3 className="text-sm font-Exo font-extralight">{page[2]}</h3>
-            </div>
-            <div>
-              <img
-                src={page[0]}
-                alt=""
-                className="w-[95vw] h-[37vh] rounded-3xl drop-shadow-2xl"
-              />
-            </div>
-          </div>
-        ) : (
-          <div className=" m-5 mb-60 w-full flex justify-center items-center ">
-            <div>
-              <img
-                src={page[0]}
-                alt=""
-                className="w-[95vw] h-[37vh] rounded-3xl drop-shadow-2xl"
-              />
-            </div>
-            <div className="PageDetails px-3">
-              <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
-                {page[1]}
-              </h1>
-              <h3 className="text-sm font-Exo font-extralight">{page[2]}</h3>
-            </div>
-          </div>
-        )}
-        {/* <div className="PageDetails px-3">
-          <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
-            {page[1]}
-          </h1>
-          <h3 className="text-sm font-Exo font-extralight">{page[2]}</h3>
-        </div>
-        <div>
-          <img
-            src={page[0]}
-            alt=""
-            className="w-[95vw] h-[37vh] rounded-3xl drop-shadow-2xl"
-          />
-        </div> */}
-      </div>
-    );
-  };
 
   const onClose = () => {
     setIsHovered({ visible: false, item: {}, isClicked: false });
   };
 
   return Details ? (
-    <div>
+    <div className=" ">
       <div className="hidden tablet:flex w-full  justify-end ">
         <button className="CloseBtn place-self-end" onClick={onClose}>
           <X size={30} />
         </button>
       </div>
       <div className="ProjectName w-fit mb-5 mx-20 flex flex-col justify-center items-center">
-        <h1 className="text-2xl w-fit txt-golden font-Cormorant">
+        <h1 className="text-2xl w-fit txt-golden font-Cormorant font-bold">
           {isHovered?.item?.name}
         </h1>
         <h3 className="text-sm txt-gray font-extralight">
@@ -117,7 +65,7 @@ const ProjectDetail = ({ isHovered, Details, setIsHovered }) => {
       </div>
     </div>
   ) : (
-    <div>
+    <div className="z-50">
       <div className="ProjectName w-fit mb-5 mx-20 flex flex-col justify-center items-center">
         <h1 className="text-2xl w-fit txt-golden font-Cormorant">
           {isHovered?.item?.name}
