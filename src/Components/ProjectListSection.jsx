@@ -39,12 +39,12 @@ const ProjectsListSection = ({ setIsHovered, isHovered }) => {
   };
 
   return (
-    <div className="tablet:w-4/5  laptop:w-3/5  ">
+    <div className="tablet:w-4/5  laptop:w-3/5  z-50">
       <div>
         {ProjectList.map((project, index) => {
           return isHovered.item.name === project.name ? (
             <div
-              className="p-2  mb-3 h-10  rounded-2xl scale-110 bg-[#162d50] drop-shadow-2xl    transition duration-100 ease-in-out  "
+              className="p-2  mb-3 h-10  rounded-2xl scale-110 bg-blue-200 drop-shadow-2xl    transition duration-100 ease-in-out  "
               key={index}
               onMouseLeave={() => {
                 console.log("end", project.name);
@@ -59,7 +59,7 @@ const ProjectsListSection = ({ setIsHovered, isHovered }) => {
             </div>
           ) : (
             <div
-              className="p-2 mb-3 h-10 tablet:w-full  rounded-2xl  laptop:hover:scale-110 laptop:hover:bg-[#162d50] laptop:hover:drop-shadow-2xl    transition duration-100 ease-in-out   "
+              className="p-2 mb-3 h-10 tablet:w-full  rounded-2xl  laptop:hover:scale-110 laptop:hover:bg-blue-200 laptop:hover:drop-shadow-2xl    transition duration-100 ease-in-out   "
               key={index}
               onMouseLeave={() => {
                 console.log("end", project.name);

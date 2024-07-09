@@ -10,6 +10,7 @@ export default {
     },
     extend: {
       fontFamily: {
+        Caveat: ["Caveat"],
         BodoniModa: ["Bodoni Moda"],
         Cormorant: ["Cormorant"],
         Exo: ["Exo 2"],
