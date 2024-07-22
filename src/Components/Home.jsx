@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ProjectsListSection from "./ProjectListSection";
 import ProjectLookUp from "./ProjectLookUpSection";
+import { motion } from "framer-motion";
+import { animationVariable } from "../Utils/animationVariable";
 
 const Home = () => {
   const [isHovered, setIsHovered] = useState({
@@ -9,14 +11,17 @@ const Home = () => {
     isClicked: false,
   });
 
-  const [imgIndx, setImgIndex] = useState(0);
-
-  // UI for multiple pages displaying under the discription
+  // UI for multiple pages displaying under the description
   const PageUI = ({ page, index }) => {
     return (
       <div className=" m-5 mb-54 w-full flex justify-center items-center  z-50">
         {index === 0 || index % 2 === 0 ? (
-          <div className=" p-5 pb-60 w-full flex justify-center items-center  z-50">
+          <motion.div
+            variants={animationVariable(0,0, 200)}
+            initial="hidden"
+            whileInView="visible"
+            className=" p-5 pb-60 w-full flex justify-center items-center  z-50"
+          >
             <div className="PageDetails px-5 tablet:w-2/3 ">
               <h1 className="text-2xl font-BodoniModa underline text-center mb-10">
                 {page[1]}
@@ -30,9 +35,14 @@ const Home = () => {
                 className="w-[65vw] h-[47vh] rounded-3xl drop-shadow-2xl"
               />
             </div>
-          </div>
+          </motion.div>
         ) : (
-          <div className=" p-5 pb-60 w-full flex justify-center items-center z-50">
+          <motion.div
+            variants={animationVariable(0,0, -200)}
+            initial="hidden"
+            whileInView="visible"
+            className=" p-5 pb-60 w-full flex justify-center items-center z-50"
+          >
             <div className="">
               <img
                 src={page[0]}
@@ -46,25 +56,37 @@ const Home = () => {
               </h1>
               <h3 className="text-sm font-Exo font-extralight">{page[2]}</h3>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     );
   };
 
-
   return (
     <div>
       <div className="home w-full h-fit desktop:mt-10 desktop:mb-10 ">
-        <h1 className="w-fit desktop:relative desktop:left-[30vw]  desktop:text-[4rem] desktop:mb-0 desktop:p-4 font-[700] m-4  pb-2 font-Caveat  txt-golden phone:text-3xl phone:mt-10 phone:text-center    ">
+        <motion.h1
+          // initial={{ x: -200, opacity: 0 }}
+          // whileInView={{ x: 0, opacity: 1 }}
+          // transition={{ duration: 0.7 }}
+          variants={animationVariable(0, 100)}
+          initial="hidden"
+          whileInView="visible"
+          className="w-fit desktop:relative desktop:left-[30vw]  desktop:text-[4rem] desktop:mb-0 desktop:p-4 font-[700] m-4  pb-2 font-Caveat  txt-golden phone:text-3xl phone:mt-10 phone:text-center    "
+        >
           Building the Web, Building Your Success.
-        </h1>
+        </motion.h1>
       </div>
       <div className="Project_List_and_Lookup w-full h-fit tablet:flex justify-evenly items-start ">
         <section className="ProjectsList hidden tablet:w-1/4 tablet:flex flex-col items-center justify-center   ">
-          <h1 className="text-center phone:text-2xl tablet:text-2xl mb-2 font-Cormorant txt-golden">
+          <motion.h1
+            variants={animationVariable(0, -100)}
+            initial="hidden"
+            whileInView="visible"
+            className="text-center phone:text-2xl tablet:text-2xl mb-2 font-Cormorant txt-golden z-50"
+          >
             My Projects
-          </h1>
+          </motion.h1>
           <ProjectsListSection
             isHovered={isHovered}
             setIsHovered={setIsHovered}
