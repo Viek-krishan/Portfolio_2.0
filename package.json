@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
+    "framer-motion": "^11.3.8",
     "http-proxy-middleware": "^3.0.0",
     "lucide-react": "^0.394.0",
     "react": "^18.2.0",

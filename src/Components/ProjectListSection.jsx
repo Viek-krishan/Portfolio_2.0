@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { ProjectList } from "../Utils/ProjectList";
+import { animationVariable } from "../Utils/animationVariable";
+import { motion } from "framer-motion";
 
 const ProjectsListSection = ({ setIsHovered, isHovered }) => {
   // Utility functions
@@ -7,34 +8,38 @@ const ProjectsListSection = ({ setIsHovered, isHovered }) => {
   //  List Element UI
   const ProjectListUI = ({ project, index }) => {
     return (
-      <Link
-        to={""}
-        key={index + "Project"}
-        onMouseEnter={() => {
-          setIsHovered({
-            visible: true,
-            item: project,
-            isClicked: isHovered.isClicked,
-          });
-        }}
-        onMouseLeave={() => {
-          console.log("end", project.name);
-          setIsHovered({
-            visible: false,
-            item: {},
-            isClicked: isHovered.isClicked,
-          });
-        }}
-        onClick={() => {
-          setIsHovered({ visible: true, item: project, isClicked: true });
-          console.log("clicked");
-        }}
-      >
-        <div className="flex justify-between">
-          <h3 className="text-md font-Philosopher">{project.name}</h3>
-          <h3 className="w-fit text-sm text-gray-500 ">{project.date}</h3>
-        </div>
-      </Link>
+      <div className="flex justify-between">
+        <h3 className="text-md font-Philosopher">{project.name}</h3>
+        <h3 className="w-fit text-sm text-gray-500 ">{project.date}</h3>
+      </div>
+      // <Link
+      //   to={""}
+      //   key={index + "Project"}
+      //   onMouseEnter={() => {
+      //     setIsHovered({
+      //       visible: true,
+      //       item: project,
+      //       isClicked: isHovered.isClicked,
+      //     });
+      //   }}
+      //   onMouseLeave={() => {
+      //     console.log("end", project.name);
+      //     setIsHovered({
+      //       visible: false,
+      //       item: {},
+      //       isClicked: isHovered.isClicked,
+      //     });
+      //   }}
+      //   onClick={() => {
+      //     setIsHovered({ visible: true, item: project, isClicked: true });
+      //     console.log("clicked");
+      //   }}
+      // >
+      //   <div className="flex justify-between">
+      //     <h3 className="text-md font-Philosopher">{project.name}</h3>
+      //     <h3 className="w-fit text-sm text-gray-500 ">{project.date}</h3>
+      //   </div>
+      // </Link>
     );
   };
 
@@ -43,31 +48,64 @@ const ProjectsListSection = ({ setIsHovered, isHovered }) => {
       <div>
         {ProjectList.map((project, index) => {
           return isHovered.item.name === project.name ? (
-            <div
-              className="p-2  mb-3 h-10  rounded-2xl scale-110 bg-blue-200 drop-shadow-2xl    transition duration-100 ease-in-out  "
+            <motion.button
+              variants={animationVariable(index / 10, -100)}
+              initial="hidden"
+              whileInView="visible"
+              className="p-2  mb-3 h-10 w-full  rounded-2xl scale-110 bg-blue-200 drop-shadow-2xl    transition duration-100 ease-in-out  "
               key={index}
               onMouseLeave={() => {
-                console.log("end", project.name);
+                if (isHovered.isClicked) {
+                  setIsHovered({
+                    visible: true,
+                    item: project,
+                    isClicked: isHovered.isClicked,
+                  });
+                  return;
+                } else {
+                  setIsHovered({
+                    visible: false,
+                    item: {},
+                    isClicked: false,
+                  });
+                }
+              }}
+              onMouseEnter={() => {
+                if (isHovered.isClicked) {
+                  return;
+                } else {
+                  setIsHovered({
+                    visible: true,
+                    item: project,
+                    isClicked: isHovered.isClicked,
+                  });
+                }
+              }}
+              onClick={() => {
+                setIsHovered({ visible: true, item: project, isClicked: true });
+                console.log("clicked");
+                return;
+              }}
+            >
+              <ProjectListUI index={index} project={project} />
+            </motion.button>
+          ) : (
+            <motion.button
+              variants={animationVariable(index / 10, -100)}
+              initial="hidden"
+              whileInView="visible"
+              className="p-2 mb-3 h-10 tablet:w-full  rounded-2xl  laptop:hover:scale-110 laptop:hover:bg-blue-200 laptop:hover:drop-shadow-2xl    transition duration-100 ease-in-out   "
+              key={index}
+              onMouseEnter={() => {
                 setIsHovered({
-                  visible: false,
-                  item: {},
-                  isClicked: isHovered.isClicked,
+                  visible: true,
+                  item: project,
+                  isClicked: false,
                 });
               }}
             >
               <ProjectListUI index={index} project={project} />
-            </div>
-          ) : (
-            <div
-              className="p-2 mb-3 h-10 tablet:w-full  rounded-2xl  laptop:hover:scale-110 laptop:hover:bg-blue-200 laptop:hover:drop-shadow-2xl    transition duration-100 ease-in-out   "
-              key={index}
-              onMouseLeave={() => {
-                console.log("end", project.name);
-                setIsHovered({ visible: false, item: {} });
-              }}
-            >
-              <ProjectListUI index={index} project={project} />
-            </div>
+            </motion.button>
           );
         })}
       </div>
