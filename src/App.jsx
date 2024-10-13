@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
-import MobileHome from "./components/MobileDesign/MobileHome";
-import Home from "./components/Home.index";
-import ContactUs from "./components/contactUs";
+import Footer from "./Components/Footer";
+import MobileHome from "./Components/MobileDesign/MobileHome";
+import Home from "./Components/Home.index";
+import ContactUs from "./Components/contactUs";
 import useLandscapeAlert from "./Utils/useLandscapeAlert";
 
 // Integrate all the website You have created into the project section which you have created. People can live use that website and experience your project.
