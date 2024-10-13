@@ -23,7 +23,7 @@
 }
 
 @layer components {
-  .txt-golden {
+  .txt-Blue {
     @apply text-[#000080]
   }
   /* .txt-golden {

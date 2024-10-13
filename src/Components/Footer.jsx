@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="z-50 bottom-0 flex flex-wrap justify-evenly desktop:my-10">
+    <div className="z-50 absolute w-full p-5 mt-5 flex flex-wrap justify-evenly ">
       <section className="Name">
-        <h1 className="phone:text-2xl  text-xl ">Vivek Krishan</h1>
+        <h1 className="phone:text-2xl laptop:text-4xl txt-Blue font-bold font-Caveat  text-xl ">
+          Vivek Krishan
+        </h1>
       </section>
       <section className="hidden tablet:block">
         <h5 className="text-center text-sm">
@@ -31,7 +33,7 @@ const Footer = () => {
           </Link>
           <Link
             className="m-2 hover:scale-110 rounded transition duration-75 ease-in-out"
-            to="https://www.instagram.com/vivek__krishan?igsh=d21ldGwzM2ZnZDkw"
+            to="https://www.instagram.com/vivek._.krishan/"
           >
             <Instagram />
           </Link>
@@ -43,11 +45,12 @@ const Footer = () => {
           </Link>
         </div>
       </section>
-      <section className="tablet:hidden">
-        <h5 className="phone:text-left text-center text-sm">
+      <section className="tablet:hidden w-full ">
+        <h5 className="phone:text-center text-center text-[0.50rem] mt-2">
           ©2023 CopyFolio. All rights reserved.
+          <br /> Powered by react
         </h5>
-        <h5 className="text-center text-sm"> Powered by react</h5>
+        <h5 className="text-center text-sm"></h5>
       </section>
     </div>
   );

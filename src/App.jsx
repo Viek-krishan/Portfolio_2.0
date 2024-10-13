@@ -1,11 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import Footer from "./Components/Footer";
-import Home from "./Components/Home";
-import Projects from "./Components/ProjectsForMobile";
+import Footer from "./components/Footer";
+import MobileHome from "./components/MobileDesign/MobileHome";
+import Home from "./components/Home.index";
+import ContactUs from "./components/contactUs";
+import useLandscapeAlert from "./Utils/useLandscapeAlert";
+
+// Integrate all the website You have created into the project section which you have created. People can live use that website and experience your project.
 
 function App() {
+  useLandscapeAlert();
   return (
-    <div className="w-full h-screen overflow-x-hidden bg-white txt-gray no-scrollbar">
+    <div className="App.jsx-Main-Div w-screen h-fit overflow-hidden ">
       {/* <div className="h-full w-full absolute   z-0  overflow-hidden ">
         <div className="bg-blue-500 w-[34vw] h-[60vh] absolute  rounded-full -left-10   blur-[500px] scale-150 z-0 opacity-60 "></div>
         <span className="bg-blue-500 w-[34vw] h-[60vh] absolute  rounded-full -right-20 bottom-0   blur-[500px] scale-150 z-0 opacity-60"></span>
@@ -34,10 +39,20 @@ function App() {
         {/* <div class="absolute top-0 z-[-2] h-screen w-screen rotate-180 transform bg-orange-400/30 bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(250,177,30,.4)_100%)]"></div> */}
       </div>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-      </Routes>
+      <div className="phone:block tablet:hidden h-fit">
+        <Routes>
+          <Route path="/" element={<MobileHome />} />
+          <Route path="/contact" element={<ContactUs />} />
+        </Routes>
+      </div>
+
+      <div className="hidden tablet:block h-fit">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<ContactUs />} />
+        </Routes>
+      </div>
+
       <Footer />
     </div>
   );

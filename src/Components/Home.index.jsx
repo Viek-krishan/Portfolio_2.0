@@ -1,8 +1,10 @@
 import { useState } from "react";
-import ProjectsListSection from "./ProjectListSection";
-import ProjectLookUp from "./ProjectLookUpSection";
+import ProjectList from "./Project-list";
 import { motion } from "framer-motion";
 import { animationVariable } from "../Utils/animationVariable";
+import ProjectDetails from "./Project-details";
+import Skills from "./Tools";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [isHovered, setIsHovered] = useState({
@@ -17,7 +19,7 @@ const Home = () => {
       <div className=" m-5 mb-54 w-full flex justify-center items-center  z-50">
         {index === 0 || index % 2 === 0 ? (
           <motion.div
-            variants={animationVariable(0,0, 200)}
+            variants={animationVariable(0, 0, 200)}
             initial="hidden"
             whileInView="visible"
             className=" p-5 pb-60 w-full flex justify-center items-center  z-50"
@@ -30,24 +32,24 @@ const Home = () => {
             </div>
             <div className="mr-10">
               <img
-                src={page[0]}
+                src={`${page[0]}`}
                 alt=""
-                className="w-[65vw] h-[47vh] rounded-3xl drop-shadow-2xl"
+                className="tablet:w-[65vw]  rounded-3xl drop-shadow-2xl"
               />
             </div>
           </motion.div>
         ) : (
           <motion.div
-            variants={animationVariable(0,0, -200)}
+            variants={animationVariable(0, 0, -200)}
             initial="hidden"
             whileInView="visible"
             className=" p-5 pb-60 w-full flex justify-center items-center z-50"
           >
             <div className="">
               <img
-                src={page[0]}
+                src={`${page[0]}`}
                 alt=""
-                className="w-[65vw] h-[47vh] rounded-3xl drop-shadow-2xl"
+                className="laptop:w-[65vw]  rounded-3xl drop-shadow-2xl"
               />
             </div>
             <div className="PageDetails px-10 tablet:w-2/3 z-50">
@@ -64,18 +66,29 @@ const Home = () => {
 
   return (
     <div>
+      {/* heading */}
       <div className="home w-full h-fit desktop:mt-10 desktop:mb-10 ">
         <motion.h1
-          // initial={{ x: -200, opacity: 0 }}
-          // whileInView={{ x: 0, opacity: 1 }}
-          // transition={{ duration: 0.7 }}
           variants={animationVariable(0, 100)}
           initial="hidden"
           whileInView="visible"
-          className="w-fit desktop:relative desktop:left-[30vw]  desktop:text-[4rem] desktop:mb-0 desktop:p-4 font-[700] m-4  pb-2 font-Caveat  txt-golden phone:text-3xl phone:mt-10 phone:text-center    "
+          className="w-full desktop:relative text-center  desktop:text-[4rem] tablet:text-[3rem] desktop:mb-0 desktop:p-4 font-[700] m-4  pb-2 font-Caveat  txt-Blue phone:text-3xl phone:mt-10   "
         >
           Building the Web, Building Your Success.
         </motion.h1>
+        <motion.div
+          variants={animationVariable(0, 100)}
+          initial="hidden"
+          whileInView="visible"
+          className="absolute right-20 top-10 "
+        >
+          <Link
+            to={"/contact"}
+            className="border px-3 py-1 bg-blue-600 text-white rounded-lg drop-shadow-xl hover:scale-110 transition duration-150 ease-in-out"
+          >
+            Let's Talk
+          </Link>
+        </motion.div>
       </div>
       <div className="Project_List_and_Lookup w-full h-fit tablet:flex justify-evenly items-start ">
         <section className="ProjectsList hidden tablet:w-1/4 tablet:flex flex-col items-center justify-center   ">
@@ -83,17 +96,14 @@ const Home = () => {
             variants={animationVariable(0, -100)}
             initial="hidden"
             whileInView="visible"
-            className="text-center phone:text-2xl tablet:text-2xl mb-2 font-Cormorant txt-golden z-50"
+            className="text-center phone:text-2xl tablet:text-2xl mb-2 font-Cormorant txt-Blue z-50"
           >
             My Projects
           </motion.h1>
-          <ProjectsListSection
-            isHovered={isHovered}
-            setIsHovered={setIsHovered}
-          />
+          <ProjectList isHovered={isHovered} setIsHovered={setIsHovered} />
         </section>
         <section className="ProjectLookUp tablet:w-4/6 phone:w-screen">
-          <ProjectLookUp isHovered={isHovered} setIsHovered={setIsHovered} />
+          <ProjectDetails isHovered={isHovered} setIsHovered={setIsHovered} />
         </section>
       </div>
 
@@ -109,7 +119,9 @@ const Home = () => {
           })}
         </div>
       ) : (
-        <div></div>
+        <div>
+          <Skills />
+        </div>
       )}
     </div>
   );

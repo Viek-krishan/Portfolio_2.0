@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { Tools } from "../Utils/ToolsList";
+import { Tools } from "../Utils/AllConstants";
 
-
-const Slider = () => {
-  
+const Skills = () => {
   const container = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
@@ -23,7 +21,6 @@ const Slider = () => {
       opacity: 1,
     },
   };
-
 
   const MyCard = ({ logo, Title }) => {
     return (
@@ -74,4 +71,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default Skills;
