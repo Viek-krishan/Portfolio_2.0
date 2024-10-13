@@ -38,7 +38,7 @@ export default function DetailsPopUp({ setIsHovered, item }) {
 
   return (
     <div className="flex justify-center items-center min-h-full  min-w-full bg-gradient-to-r from-white to-blue-300 overflow-hidden  p-8">
-      <div className="relative w-[90vw] h-fit  ">
+      <div className="relative w-[95vw] min-h-[80vh] max-h-fit  ">
         <div className="absolute inset-0 bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-xl shadow-xl"></div>
         <div className="relative p-2">
           <AnimatePresence custom={sync}>

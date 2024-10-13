@@ -23,7 +23,7 @@ const ProjectList = ({ setIsHovered, isHovered }) => {
             <motion.button
               variants={animationVariable(index / 10, -100)}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
               className="p-2  mb-3 h-10 w-full  rounded-2xl scale-110 bg-blue-200 drop-shadow-2xl   transition duration-100 ease-in-out  "
               key={index}
               onMouseLeave={() => {
@@ -65,7 +65,7 @@ const ProjectList = ({ setIsHovered, isHovered }) => {
             <motion.button
               variants={animationVariable(index / 10, -100)}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
               className="p-2 mb-3 h-10 tablet:w-full  rounded-2xl  laptop:hover:scale-110 laptop:hover:bg-blue-200 laptop:hover:drop-shadow-2xl    transition duration-100 ease-in-out   "
               key={index}
               onMouseEnter={() => {

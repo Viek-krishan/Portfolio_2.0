@@ -1,9 +1,10 @@
+import { div } from "framer-motion/client";
 import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="z-50 absolute w-full p-5 mt-5 flex flex-wrap justify-evenly ">
+    <div className="z-40 relative w-full p-5 mt-5 flex flex-wrap justify-evenly bottom-0 ">
       <section className="Name">
         <h1 className="phone:text-2xl laptop:text-4xl txt-Blue font-bold font-Caveat  text-xl ">
           Vivek Krishan

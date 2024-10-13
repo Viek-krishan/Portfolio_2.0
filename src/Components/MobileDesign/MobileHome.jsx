@@ -12,7 +12,7 @@ const MobileHome = () => {
   });
 
   return (
-    <div>
+    <div className="">
       {/* heading */}
       <div className="home w-full h-fit desktop:mt-10 desktop:mb-10 ">
         <motion.h1
