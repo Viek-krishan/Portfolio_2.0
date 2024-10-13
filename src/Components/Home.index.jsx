@@ -71,7 +71,7 @@ const Home = () => {
         <motion.h1
           variants={animationVariable(0, 100)}
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           className="w-full desktop:relative text-center  desktop:text-[4rem] tablet:text-[3rem] desktop:mb-0 desktop:p-4 font-[700] m-4  pb-2 font-Caveat  txt-Blue phone:text-3xl phone:mt-10   "
         >
           Building the Web, Building Your Success.
@@ -95,7 +95,7 @@ const Home = () => {
           <motion.h1
             variants={animationVariable(0, -100)}
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
             className="text-center phone:text-2xl tablet:text-2xl mb-2 font-Cormorant txt-Blue z-50"
           >
             My Projects
